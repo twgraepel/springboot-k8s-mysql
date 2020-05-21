@@ -1,0 +1,58 @@
+@PathVariable
+@Valid
+@RequestBody
+@ExceptionHandler(ConstraaintValidation.class)
+@ResponseStatus(HttpStatus.XXXX)
+
+@SL4J
+
+@GetMapping("/beerID
+
+@Validated
+@NotNull
+@NotBlank
+@Size (
+
+resources
+vexcel nypd org
+
+--> services
+
+--> web
+
+--> --> controller
+
+--> --> model
+
+--> application
+
+
+Model
+@Data /* Lomobok*/
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+UUID
+
+
+@ControllerAdvice
+@ExceptionHandler Section 70
+
+Profile
+application-snake
+application-kebab
+@JsonTest
+camelCase
+@ActiveProfiles("snake") underscores
+@ActiveProfiles("kebab") hyphens
+naming strategy
+
+@JsonProperty
+@JsonFormat - control the output of the
+@JsonSerialize(using = LocalDateSerializer.class)
+@JsonCreator
+
+
+mssc-brewery (has customer and v2)
+mssc-brewery-client
+mssc-beer-service (ha page list and repository and bootstrap)

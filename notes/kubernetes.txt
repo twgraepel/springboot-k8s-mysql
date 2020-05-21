@@ -1,0 +1,444 @@
+
+=*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*=
+---------------------------------------------------------------------------------
+https://www.bing.com/videos/search?q=kubernetes+spring+boot+tutorial&&view=detail&mid=7234AD63B8D620D163F37234AD63B8D620D163F3&&FORM=VRDGAR&ru=%2Fvideos%2Fsearch%3Fq%3Dkubernetes%2520spring%2520boot%2520tutorial%26qs%3Dn%26form%3DQBVR%26sp%3D-1%26pq%3Dkubernetes%2520spring%2520boot%2520tutorial%26sc%3D1-31%26sk%3D%26cvid%3D59A6986BCE644E688223AC5D7E83BE4E
+Build and Deploy a Spring Boot App on Kubernetes
+Techno Town Techie
+---------------------------------------------------------------------------------
+=*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*=
+
+=======
+Install
+=======
+docker
+minikube
+
+
+minikube start
+
+docker images
+--> List all of the images
+
+eval $(minikube docker-env)
+
+docker build -t springboot-k8s:1.0 .
+docker images
+
+kubectl run springboot-k8s --image=springboot-k8s:1.0 --port=8080 --image-pull-policy=IfNotPresent
+kubectl get deployments
+kubectl expose deployment springboot-k8s --type=NodePort
+kubectl get services
+minikube ip
+
+kubectl get pods -o wide
+kubectl get deployments
+kubectl scale --replicas=3 deployment/springboot-k8s
+kubectl get deployments
+kubectk get rs
+minikube dashboard
+
+===========
+AutoScaling
+===========
+
+kubectl autoscale deployment springboot-k8s --min=1 --max=10 --cpu-percent=75
+kubectl get hpa
+
+==================
+Upgrading to 2.0
+==================
+docker build -t springboot-k8s:2.0 .
+kubectl set image deployment springboot-k8s springboot-k8s:springboot-k8s:2.0
+kubectl get deployments -O wide
+kubectl describe deployments
+
+
+kubectl delete deployment springboot-k8s
+kubectl delete service springboot-k8s
+kubectl apply -f deployment.yml
+kubectl apply -f service.yml
+
+===============
+deployment.yaml
+===============
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-k8s
+spec:
+  selector:
+    matchLabels:
+      app: springboot-k8s
+  replicas: 3
+  template:
+    metadata:
+	  labels:
+	    app: springboot-k8s
+	spec:
+	  containers:
+	    - name: springboot-k8s
+		  image: springboot-k8s:1.0
+		  ports:
+		    - containerPort:8080
+============
+service.yaml
+============
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-k8s
+  labels:
+    name: springboot-k8s
+spec:
+  ports:
+    - nodePort: 30163
+	  port: 8080
+	  targetPort: 8080
+	  protocol:TCP
+  selector:
+    app: springboot-k8s
+  type: NodePort
+
+
+=======================================================
+JAVA
+=======================================================
+package com.example,k8s.springbootkubernetes.controller;
+import org.springframework.web.bing.annotation.RequestMapping;
+
+@RestController
+public class WelcomeController{
+	@RequestMapping("/greeting")
+	public String greeting(){
+		return "Well looky here!";
+	}
+}
+
+=======================================================
+DOCKERFILE
+=======================================================
+FROM adoptopenjdk/openjdk11:alpine-jre
+ADD target/springboot-example.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+=*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*=
+---------------------------------------------------------------------------------
+SECOND VIDEO
+https://www.youtube.com/watch?v=6OJgD_RygiM
+TechnoTown Techie
+Building and deploying Spring Boot application with MySSQL on Kubernetes Cluster
+https://github.com/shameed1910/springboot-k8s-mysql
+---------------------------------------------------------------------------------
+=*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*=
+
+=======================================================
+DOCKERFILE
+=======================================================
+FROM adoptopenjdk/openjdk11:alpine-jre
+ADD target/springboot-k8s-mysql-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+====================
+mysql-configmap.yaml
+====================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+	name:db-conf
+data:
+	host: mysql
+	name: test
+
+============================
+mysqldb-root-credentials.yml
+============================
+apiVersion: v1
+kind: Secrets
+metadata:
+	name:db-root-credentials
+data:
+	password: SEE BELOW
+
+============================
+mysqldb-root-credentials.yml
+============================
+apiVersion: '3'
+kind: Secrets
+metadata:
+	name:db-credentials
+data:
+	username: SEE BELOW
+	password: SEE BELOW
+
+======================
+cmd to encode password
+======================
+echo -n 'admin123' | base64
+
+====================
+mysql-deployment.yml
+====================
+File too big to recreate.  At 13:47 seconds in video
+Service is line 1-17
+PersistentVolumeClaim is 18-32
+Deployment is 33-end
+env:
+	- name: MYSQL_USER
+	  valueFrom:
+	    secretKeyRef | configMapKeyRef:
+		  name:db-credentials|db-root-credentials|db-conf
+		  ke: name|username|password
+env properties value from secrets
+kubectl exec -it <pod> /bin/bash
+
+another spring video
+https://blog.couchbase.com/docker-java-intellij-idea-webinar-replay/
+https://www.youtube.com/watch?v=FlSup_eelYE&feature=emb_rel_pause
+
+https://youtu.be/_H7qYkAt8Bo
+CI/CD With Gitlab & Azure Kubernetes Service (AKS)
+
+
+3 node kubernetes cluster RH , ubuntu
+
+Storage volumes
+
+git repository
+
+internet connection to get to the docker image repository to download
+--> DAPR
+--> RUDR
+--> Kafka
+--> redis
+--> mariadb
+--> kubeless
+--> elasticsearch
+--> docker, docker compose
+--> other images
+
+windows machine for development
+or access from my mac
+
+domain name for the routing and ingress
+
+
+the ability to extend to additional "bare metal servers" and external data entry
+the ability to demonstrate vertical and horizontal scaling kubernetes options
+the ability to demonstrate a "second" data center
+
+Azure Commands
+==============
+
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest
+
+az provider register -n Microsoft.ContainerService
+az provider show -n Microsoft.ContainerService
+
+Create resource-group
+=====================
+az group create --name "graepel-aks" --location eastus
+az aks create --resource-group "graepel-aks" --name "kubelive" --node-count 3 --generate-ssh-keys
+az aks list
+az aks scale
+
+===============
+az aks commands
+===============
+browse
+create
+delete
+get-credentials
+get-versions
+install-cli
+install-connector
+remove-connector
+list
+scale
+show
+upgrade
+wait
+===============
+az aks commands
+===============
+
+
+
+"kubelive" is the cluster name
+
+az aks install-cli
+az aks get-credentials --resource-group graepel-aks --name "kubeli
+kubectl get nodes
+kubectl get cs  (component status)
+kubectl cluster-info
+kubectl create -f "azure_vote.yaml"
+kubectl get po --watch
+kubectl get svc --watch
+kubectl run --image=nginx "myweb"
+kubectl get deploy
+
+
+kubectl get pods
+kubectl expose pod myweb-XXXXXXXX --port=80 --target-port=80 --type=LoadBalancer
+==> takes pod and exposes to the outside world
+
+kubectl top node
+
+types
+====
+disk
+load balancer
+route table
+network interface --virtual nic
+network security group --inbound outbound
+public ip address
+virtual machine
+virtual network
+
+TLS runs on port 443
+
+Prometheus and Pod autoscaling
+https://itnext.io/k8s-monitor-pod-cpu-and-memory-usage-with-prometheus-28eec6d84729
+
+ARM template Azure Resouce Manager Template
+Azure File Share then expose it as a volume
+Kubernetes not good for high cpu, highly transactional workload.  Better for a SSD backed VM
+
+=================
+Kubernetes Master
+https://www.youtube.com/watch?v=_3NUI5vasPk
+=================
+API Server
+Scheduler
+Control Manager
+==> node
+==> replication
+==> endpoint
+==> service account and token
+etcd = key value store
+=================
+Kubernetes Master
+=================
+
+=====================
+Kubernete Worker Node
+=====================
+Kubelet (communicates with API Server)
+Kube-proxy (distibute network and exposes to the internet)
+=====================
+Kubernete Worker Node
+=====================
+================
+Kubernetes Kinds
+================
+kubectl api-resources
+
+https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-apiversion-definition-guide.html
+CertificateSigningRequest
+ClusterRoleBinding
+ClusterRole
+ComponentStatus
+ConfigMap
+ConrollerRevision
+CronJob
+DaemonSet
+Deployment
+Endpoints
+Event
+HorizontalPodAutoScaler
+Ingress
+Job
+LimitRange
+Namespace
+NetworkPolicy
+Node
+PersistentVolumeClaim
+PersistentVolume
+PodDisruptionBudget
+Pod
+PodSecurityPolicy
+PodTemplate
+ReplicaSet
+ReplicationController
+ResourceQuota
+RoleBinding
+Role
+Secret
+ServiceAccount
+Service
+StatefulSet
+================
+Kubernetes Kinds
+================
+Flux synchronize your version control
+Skaffold = CICD
+
+
+========================================================
+Windows
+========================================================
+alias az='az.cmd'
+PATH=$PATH:/c/Users/twgraepel/.azure-kubectl
+
+
+$ export RELEASE=$(curl -s https://api.github.com/repos/kubeless/kubeless/releases/latest | grep tag_name | cut -d '"' -f 4)
+$ kubectl create ns kubeless
+$ kubectl create -f https://github.com/kubeless/kubeless/releases/download/$RELEASE/kubeless-$RELEASE.yaml
+
+kubectl get pods -n kubeless
+kubectl get deployment -n kubeless
+kubectl get crd
+kubectl get customresourcedefinition
+
+kubectl create -f https://raw.githubusercontent.com/kubeless/kubeless-ui/master/k8s.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+curl -L --data '{"Another": "Echo"}' --header "Content-Type:application/json" localhost:8080/api/v1/namespaces/default/services/hello:http-function-port/proxy/
+
+curl -L https://github.com/kubeless/kubeless/releases/download/v1.0.6/kubeless_windows-amd64.zip
+
+
+kubeless function deploy time --runtime python2.7 --from-file test.py --handler test.generateCurrentTime
+kubeless function deploy guid --runtime python2.7 --from-file test.py --handler test.generateGUID
+
+
+kubeless function deploy hello --runtime python 2.7 --from -file test.py --handler test.generateCurrentTime
+kubeless function deploy bikesearch --trigger-http --runtime python2.7 --handler city-bikes.find --from-file /tmp/city-bikes.py
+
+=========================
+Great Ingress Explanation
+=========================
+https://www.youtube.com/watch?v=VicH6KojwCI
+
+
+$ az network public-ip create --resource-group graepel-aks --name graepelIP --sku Standard --allocation-method static
+[Coming breaking change] In the coming release, the default behavior will be changed as follows when sku is Standard and zone is not provided: For zonal regions, you will get a zone-redundant IP indicated by zones:["1","2","3"]; For non-zonal regions, you will get a non zone-redundant IP indicated by zones:[].
+{
+  "publicIp": {
+    "ddosSettings": null,
+    "dnsSettings": null,
+    "etag": "W/\"46bc52f8-ec57-4661-b17d-f8b2af963afa\"",
+    "id": "/subscriptions/55e0464c-7ba8-4fa0-8179-427e803c051a/resourceGroups/graepel-aks/providers/Microsoft.Network/publicIPAddresses/graepelIP",
+    "idleTimeoutInMinutes": 4,
+    "ipAddress": "52.188.44.37",
+    "ipConfiguration": null,
+    "ipTags": [],
+    "location": "eastus",
+    "name": "graepelIP",
+    "provisioningState": "Succeeded",
+    "publicIpAddressVersion": "IPv4",
+    "publicIpAllocationMethod": "Static",
+    "publicIpPrefix": null,
+    "resourceGroup": "graepel-aks",
+    "resourceGuid": "769fec06-8524-4673-afb8-44f8203039fb",
+    "sku": {
+      "name": "Standard"
+    },
+    "tags": null,
+    "type": "Microsoft.Network/publicIPAddresses",
+    "zones": null
+  }
+}
+
+
+check my dns propogation
+https://www.whatsmydns.net/#A/kubes.graepelcode.services

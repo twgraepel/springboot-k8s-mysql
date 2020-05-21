@@ -1,0 +1,146 @@
+https://vshn.ch/en/blog/a-very-quick-comparison-of-kubernetes-serverless-frameworks/
+https://www.bing.com/videos/search?q=dapr+runtime&&view=detail&mid=16A36B21A1DD0F32E76A16A36B21A1DD0F32E76A&&FORM=VRDGAR&ru=%2Fvideos%2Fsearch%3Fq%3Ddapr%2520runtime%26qs%3Dn%26form%3DQBVDMH%26sp%3D-1%26pq%3Ddapr%2520runtime%26sc%3D2-12%26sk%3D%26cvid%3DE0022A0298EC43AFA2373ECCB85695D5
+https://thenewstack.io/tutorial-first-look-at-dapr-for-microservices-running-in-kubernetes/
+https://itnext.io/simplifying-microservices-on-kubernetes-with-microsofts-dapr-distributed-application-runtime-9aece5723484
+https://www.gatevnotes.com/simplify-microservices-development-with-dapr-distributed-application-runtime/
+https://github.com/oam-dev/rudr
+https://www.youtube.com/watch?v=17fqujSGJFM
+https://www.youtube.com/watch?v=CgqI7nen-Ng&feature=youtu.be&t=1855
+
+OAM
+
+CloudState.io
+
+ISTIO
+KNative
+
+Kubernetes Serverless Projects
+==============================
+FaaS
+1.  OpenFaaS
+2.  Fn Project
+3.  Fission
+4.  Apache OpenWhisk
+5.  Kubeless
+6.  TriggerMesh
+
+OpenLambda
+
+Server to Service Invocation & Fault Handling
+State Managment
+Publish and subscrible
+Resource Binding and Triggers
+Actors
+Distributed Tracing & Diagnostics
+Extensible
+
+Building blocks
+
+
+DAPR as FAAS
+DAPR with Microservices
+
+
+OPEN WHISK
+
+
+DAPR:
+Application Operator
+Infrastructure Operator
+Application Developer
+Application Architect
+
+
+Application
+===========
+Application Scopes - Network, Health
+Parameters
+
+Component
+=========
+Workload Type
+Parameters
+
+Traits
+======
+Trait Type
+Parameters
+
+Application Configuration
+=========================
+Application Reference
+Deployment Scopes
+Configured Traits
+Configured Parameters
+Application Reference
+
+Hostname
+Ingress
+Scaling
+Storage Binding
+Event Binding
+State Binding
+
+service account
+
+
+Security
+Monitoring
+Decouple traffic magement and infrastructure autoscaling
+Fault Injection
+Load Balancng
+namespace
+
+DAPR Operator
+DAPR Sidecar Injector
+DAPR-Sentry
+DAPR-Actor Placement (same as DAPR-placement?)
+DAPR-api
+dapr-http
+dapr-grpc
+
+POD has Dapr Runtime
+
+other software
+terraform
+octant port 7777
+kind
+kapp
+
+DAPR Notes = Distributed Application Runtime
+
+Runtime
+Service Building Blocks
+-> Service Invocation
+-> State Management
+-> Pub Sub
+-> Actors
+-> Event Driven Resource Binding
+-> Distributed Tracing
+
+
+Native Libraries and SDKs
+
+https://stackshare.io/dapr
+
+-Event-driven Pub-Sub system with pluggable providers and at-least-once semantics
+-Input and Output bindings with pluggable providers
+-State management with pluggable data stores
+-Consistent service-to-service discovery and invocation
+-Opt-in stateful models: Strong/Eventual consistency, First-write/Last-write wins
+-Cross platform Virtual Actors
+-Rate limiting
+-Built-in distributed tracing using Open Telemetry
+-Runs natively on Kubernetes using a dedicated Operator and CRDs
+-Supports all programming languages via HTTP and gRPC
+-Multi-Cloud, open components (bindings, pub-sub, state) from Azure, AWS, GCP
+-Runs anywhere - as a process or containerized
+-Lightweight (58MB binary, 4MB physical memory)
+-Runs as a sidecar - removes the need for special SDKs or libraries
+-Dedicated CLI - developer friendly experience with easy debugging
+-Clients for Java, Dotnet, Go, Javascript and Python
+
+
+
+https://thenewstack.io/tutorial-deploy-microservices-on-kubernetes-through-rudr/
+
