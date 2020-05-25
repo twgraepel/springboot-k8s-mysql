@@ -19,6 +19,7 @@ stages:
     - task: Maven@3
       inputs:
         mavenPomFile: 'springboot-k8s-mysql/pom.xml'
+        mavenOptions: '-DskipTests'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         mavenVersionOption: 'Default'
