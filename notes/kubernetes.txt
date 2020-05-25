@@ -238,7 +238,7 @@ az provider show -n Microsoft.ContainerService
 Create resource-group
 =====================
 az group create --name "graepel-aks" --location eastus
-az aks create --resource-group "graepel-aks" --name "kubelive" --node-count 3 --generate-ssh-keys
+az aks create --resource-group "graepel-aks" --name "clusterChuck" --node-count 1 --generate-ssh-keys
 az aks list
 az aks scale
 
@@ -267,7 +267,9 @@ az aks commands
 "kubelive" is the cluster name
 
 az aks install-cli
-az aks get-credentials --resource-group graepel-aks --name "c
+az aks get-credentials --resource-group graepel-aks --name clusterChuck
+az aks browse --resource-group graepel-aks  --name clusterChuck
+
 kubectl get nodes
 kubectl get cs  (component status)
 kubectl cluster-info
@@ -445,3 +447,15 @@ https://www.whatsmydns.net/#A/kubes.graepelcode.services
 
 intellij with kubernetes
 https://www.youtube.com/watch?v=8p5GWvjKX9Q
+
+
+Assign a static ip to aks
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
+
+az aks show --resource-group graepel-aks --name clusterChuck --query nodeResourceGroup -o tsv
+MC_graepel-aks_clusterChuck_eastus
+
+52.224.24.68
+
+kubectl expose deployment springboot-k8s-mysql --type=LoadBalancer --port=8080
