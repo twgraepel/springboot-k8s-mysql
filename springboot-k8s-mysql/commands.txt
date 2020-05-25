@@ -1,0 +1,5 @@
+mvn clean install  -DskipTests
+docker build -t twgraepel/springboot-k8s-mysql .
+docker push twgraepel/springboot-k8s-mysql
+clear; kubectl get pods
+kubectl delete pods springboot-k8s-mysql-5bdf46bfc-2277m

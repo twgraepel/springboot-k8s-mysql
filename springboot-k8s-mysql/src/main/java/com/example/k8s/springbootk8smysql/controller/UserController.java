@@ -23,13 +23,18 @@ public class UserController {
 	@PostMapping("/addUser")
 	public String saveUser(@RequestBody User emp) {
 		userRepository.save(emp);
-		return "User added successfully::"+emp.getId();
+		return "User added successfully::" ; //+emp.getid();
 		
 	}
 	
 	@GetMapping("/users")
 	public List<User> getUsers() {
 		return userRepository.findAll();
+	}
+
+	@GetMapping("/russian-users")
+	public List<User> getRussianUsers() {
+		return userRepository.findByCountry("Russia");
 	}
 
 	@GetMapping("/findUser/{id}")
@@ -40,7 +45,7 @@ public class UserController {
 	@GetMapping("/deleteUser/{id}")
 	public String deleteUser(@PathVariable Long id) {
 		userRepository.deleteById(id);
-		return "Deleted User Successfully::"+id;
+		return "Deleted User ::"+id;
 	}
 	
 
