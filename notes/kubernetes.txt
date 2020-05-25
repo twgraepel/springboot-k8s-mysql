@@ -267,7 +267,7 @@ az aks commands
 "kubelive" is the cluster name
 
 az aks install-cli
-az aks get-credentials --resource-group graepel-aks --name "kubeli
+az aks get-credentials --resource-group graepel-aks --name "c
 kubectl get nodes
 kubectl get cs  (component status)
 kubectl cluster-info
@@ -442,3 +442,6 @@ $ az network public-ip create --resource-group graepel-aks --name graepelIP --sk
 
 check my dns propogation
 https://www.whatsmydns.net/#A/kubes.graepelcode.services
+
+intellij with kubernetes
+https://www.youtube.com/watch?v=8p5GWvjKX9Q
