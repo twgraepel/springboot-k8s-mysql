@@ -47,4 +47,8 @@ stages:
       inputs:
         command: logout
         containerRegistry: DockerHub-twgraepel
-
+    - task: PublishBuildArtifacts@1
+      displayName: Publish k8s deployment artifact
+      inputs:
+        pathToPublish: 'springboot-k8s-mysql/src/main/resources/deployment_http.yml' 
+        artifactName: 'k8s-deployment-yaml' 
