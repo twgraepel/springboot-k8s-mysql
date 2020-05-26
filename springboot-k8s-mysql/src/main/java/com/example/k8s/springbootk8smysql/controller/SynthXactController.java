@@ -56,7 +56,7 @@ public class SynthXactController {
 
     @GetMapping("/about")
     public String aboutPage() {
-        return "This is the about string";
+        return "This is the about string!";
     }
 
 }
