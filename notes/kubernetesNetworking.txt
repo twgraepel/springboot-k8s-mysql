@@ -1,0 +1,45 @@
+
+# Use a static public IP address with the Azure Kubernetes Service (AKS) load balancer
+https://www.youtube.com/watch?v=afG_UOmqSZU
+https://pixelrobots.co.uk/2019/06/use-a-static-public-ip-address-outside-of-the-node-resource-group-with-the-azure-kubernetes-service-aks-load-balancer/
+
+kubectl apply -f< FILEBELOW>
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-resource-group: Pixel-General-UKS
+  name: azurelbpip
+spec:
+  loadBalancerIP: 51.140.94.151
+  type: LoadBalancer
+  ports:
+  - port: 433
+  selector:
+    app: azurelbpip
+
+
+
+kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
+
+
+Exposing a node port to internet is not feasible yet, however you have several options that could allow you to accomplish your goal. Some of them are:
+
+HTTP application routing
+https://docs.microsoft.com/en-us/azure/aks/http-application-routing
+
+Create an HTTPS ingress controller on Azure Kubernetes Service (AKS)
+https://docs.microsoft.com/en-us/azure/aks/ingress-tls
+
+Create an application gateway with an internal load balancer (ILB)
+https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ilb-arm
+
+Application Gateway Ingress Controller + aks nodes.
+https://github.com/Azure/application-gateway-kubernetes-ingress
+
+Internal Load balancer
+https://docs.microsoft.com/en-us/azure/aks/internal-lb
+
+External load balancer
+https://docs.microsoft.com/en-us/azure/aks/static-ip
