@@ -1,0 +1,54 @@
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  #tag: '$(Build.BuildId)'
+  tag: 'latest'
+  dockerimage: 'twgraepel/springboot-k8s-mysql'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'springboot-k8s-mysql/pom.xml'
+        mavenOptions: '-DskipTests'
+        publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
+    - task: Docker@2
+      displayName: Login to Docker Hub
+      inputs:
+        command: login
+        containerRegistry: DockerHub-twgraepel
+    - task: Docker@2
+      displayName: Build and push an image to '$(dockerimage)'
+      inputs:
+        repository: $(dockerimage)
+        command: buildAndPush
+        dockerfile: '$(Build.SourcesDirectory)/springboot-k8s-mysql/Dockerfile'
+        tags: |
+          $(tag)
+          azure-pipeline-built
+    - task: Docker@2
+      displayName:  Logout out Docker Hub
+      inputs:
+        command: logout
+        containerRegistry: DockerHub-twgraepel
+    - task: PublishBuildArtifacts@1
+      displayName: Publish k8s deployment artifact
+      inputs:
+        pathToPublish: 'springboot-k8s-mysql/src/main/resources/deployment_http.yml' 
+        artifactName: 'k8s-deployment-yaml' 
