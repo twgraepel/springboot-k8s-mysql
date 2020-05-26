@@ -53,4 +53,10 @@ public class SynthXactController {
         findMe.get().updateLate();
         return findMe;
     }
+
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "This is the about String";
+    }
+
 }
