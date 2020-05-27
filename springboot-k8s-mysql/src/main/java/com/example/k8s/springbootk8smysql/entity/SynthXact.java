@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "synthxact")
+@Table(name = "spring_synthxact")
 public class SynthXact {
     @Id
     @GeneratedValue(generator = "uuid2")

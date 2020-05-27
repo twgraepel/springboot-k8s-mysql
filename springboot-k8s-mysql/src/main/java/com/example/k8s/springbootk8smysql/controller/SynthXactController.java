@@ -59,4 +59,9 @@ public class SynthXactController {
         return "This is the about string! My god this is taking forever";
     }
 
+    @GetMapping("/whoDoILove")
+    public String lovePage() {
+        return "Maureen Cassese since 1988!";
+    }
+
 }
