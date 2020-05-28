@@ -19,7 +19,7 @@ Field Name | Data Type | In Database | In REST | Description
 ---------- | --------- | ----------- | ------- | -----------
 id | UUID | &#9745; | &#9745; | This is the main type for the processing of the synthetic transaction.
 synth_type | String | &#9745; | &#9745; | This is the main type for the processing of the synthetic transaction.
-
+other_field_that_is_long |
 
 
 
