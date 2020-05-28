@@ -5,6 +5,7 @@
 
 ### States
 State | Description
+----- | -----------
 Initiate | XXXX
 Running | XXXX
 Complete | XXXX
