@@ -2,15 +2,10 @@
 
 ## Synthetic Transaction State Flow
 ![alt text](readme_resources/SynthTransactionStateFlow.png "The Title")
-- [ ]  
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
+- [ ] Initial
+- [x] Transitory
+- [ ] Final
+
 ### States
 State | Final State | Description
 ----- | ----------- | ----------------------------------
