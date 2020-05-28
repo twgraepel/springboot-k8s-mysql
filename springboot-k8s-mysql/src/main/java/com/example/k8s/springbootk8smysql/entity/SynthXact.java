@@ -1,21 +1,11 @@
 package com.example.k8s.springbootk8smysql.entity;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 @Getter
 @Setter
