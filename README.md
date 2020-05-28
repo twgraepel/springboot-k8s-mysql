@@ -2,7 +2,7 @@
 
 ## Synthetic Transaction State Flow
 ![alt text](readme_resources/SynthTransactionStateFlow.png "The Title")
-- [ ] 
+- [ ]  
 - [x] Venus
 - [x] Earth (Orbit/Moon)
 - [x] Mars
