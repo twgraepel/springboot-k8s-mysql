@@ -14,6 +14,13 @@ Orphaned | &#9744; | XXXX
 Unorphaned | &#9744; |  XXXX
 Abandoned | &#9745; | XXXX
 
+### Fields of Importance
+Field Name | Data Type | In Database | In REST | Description
+---------- | --------- | ----------- | ------- | -----------
+id | UUID | &#9745; | &#9745; | This is the main type for the processing of the synthetic transaction.
+synth_type | String | &#9745; | &#9745; | This is the main type for the processing of the synthetic transaction.
+
+
 
 
 # springboot-k8s-mysql
