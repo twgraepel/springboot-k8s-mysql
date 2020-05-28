@@ -12,7 +12,7 @@ Complete |  <ul><li>-[x]</li><li> | XXXX
 Late | | XXXX
 Orphaned | | XXXX
 Unorphaned | |  XXXX
-Abandoned |  <ul><li>-[x]</li><li> | XXXX
+Abandoned | -[x] | XXXX
 
 
 
