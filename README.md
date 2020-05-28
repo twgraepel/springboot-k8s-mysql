@@ -1,5 +1,6 @@
+# Synthetic Transactions
 
-
+## Synthetic Transaction State Flow
 ![alt text](readme_resources/SynthTransactionStateFlow.png "The Title")
 
 
