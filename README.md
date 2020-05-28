@@ -9,13 +9,13 @@
 ### States
 State | Final State | Description
 ----- | ----------- | ----------------------------------
-Initiate | - [] | XXXX
-Running | - [] | XXXX
-Complete | - [x] | XXXX
-Late | | XXXX
-Orphaned | | XXXX
-Unorphaned | |  XXXX
-Abandoned | -[x] | XXXX
+Initiate | &#9744; | XXXX
+Running | &#9744; | XXXX
+Complete | &#9745; | XXXX
+Late | &#9744; | XXXX
+Orphaned | &#9744; | XXXX
+Unorphaned | &#9744; |  XXXX
+Abandoned | &#9745; | XXXX
 
 
 
