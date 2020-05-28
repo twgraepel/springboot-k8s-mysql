@@ -3,6 +3,16 @@
 ## Synthetic Transaction State Flow
 ![alt text](readme_resources/SynthTransactionStateFlow.png "The Title")
 
+### States
+State | Description
+Initiate | XXXX
+Running | XXXX
+Complete | XXXX
+Late | XXXX
+Orphaned | XXXX
+Unorphaned | XXXX
+Abandoned | XXXX
+
 
 
 # springboot-k8s-mysql
