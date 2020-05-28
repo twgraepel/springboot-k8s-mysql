@@ -1,14 +1,11 @@
 # Synthetic Transactions
 
 ## Synthetic Transaction State Flow
-![alt text](readme_resources/SynthTransactionStateFlow.png "The Title")
-- [ ] Initial
-- [x] Transitory
-- [ ] Final
+![alt text](readme_resources/SynthTransactionStateFlow.png "Synthetic Transaction State Flow")
 
 ### States
-State | Final State | Description
------ | ----------- | ----------------------------------
+Status | Final State | Description
+------ | ----------- | ----------------------------------
 Initiate | &#9744; | XXXX
 Running | &#9744; | XXXX
 Complete | &#9745; | XXXX
