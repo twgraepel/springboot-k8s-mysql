@@ -6,9 +6,9 @@
 ### States
 State | Final State | Description
 ----- | ----------- | ----------------------------------
-Initiate | | XXXX
-Running | | XXXX
-Complete |  <ul><li>-[x]</li><li> | XXXX
+Initiate | - [] | XXXX
+Running | - [] | XXXX
+Complete | - [x] | XXXX
 Late | | XXXX
 Orphaned | | XXXX
 Unorphaned | |  XXXX
