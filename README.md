@@ -8,11 +8,11 @@ State | Final State | Description
 ----- | ----------- | ----------------------------------
 Initiate | | XXXX
 Running | | XXXX
-Complete |  <ul><li>- [x] item1</li><li> | XXXX
+Complete |  <ul><li>-[x]</li><li> | XXXX
 Late | | XXXX
 Orphaned | | XXXX
 Unorphaned | |  XXXX
-Abandoned |  <ul><li>- [x] item1</li><li> | XXXX
+Abandoned |  <ul><li>-[x]</li><li> | XXXX
 
 
 
