@@ -4,15 +4,15 @@
 ![alt text](readme_resources/SynthTransactionStateFlow.png "The Title")
 
 ### States
-State | Description
------ | -----------
-Initiate | XXXX
-Running | XXXX
-Complete | XXXX
-Late | XXXX
-Orphaned | XXXX
-Unorphaned | XXXX
-Abandoned | XXXX
+State | Final State | Description
+----- | ----------- | ----------------------------------
+Initiate | | XXXX
+Running | | XXXX
+Complete |  <ul><li>- [x] item1</li><li> | XXXX
+Late | | XXXX
+Orphaned | | XXXX
+Unorphaned | |  XXXX
+Abandoned |  <ul><li>- [x] item1</li><li> | XXXX
 
 
 
