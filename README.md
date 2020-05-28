@@ -33,6 +33,10 @@ __This will also be bold__
 
 _You **can** combine them_
 
+| Unchecked | Checked |
+| --------- | ------- |
+| &#9744;   | &#9745; |
+
 Unordered lists
 * Item 1
 * Item 2
