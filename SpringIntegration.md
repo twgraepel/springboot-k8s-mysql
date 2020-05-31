@@ -1,5 +1,7 @@
 # Spring Integration
+
 ##Introduction
+
 ###Endpoints
 * Adapters - connect channel to some other system
 * Filters - remove some messages from channel based on header, content
