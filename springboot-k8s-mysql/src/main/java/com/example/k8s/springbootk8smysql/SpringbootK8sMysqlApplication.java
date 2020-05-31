@@ -2,12 +2,14 @@ package com.example.k8s.springbootk8smysql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
+@EnableScheduling
+@EnableTransactionManagement
 public class SpringbootK8sMysqlApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootK8sMysqlApplication.class, args);
 	}
-
 }

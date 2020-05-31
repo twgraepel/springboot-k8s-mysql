@@ -1,9 +1,11 @@
 package com.example.k8s.springbootk8smysql.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 
+@Builder
 @Getter
 @Setter
 @Entity

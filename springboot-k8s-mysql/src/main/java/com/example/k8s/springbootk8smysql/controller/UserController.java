@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.k8s.springbootk8smysql.entity.User;
 import com.example.k8s.springbootk8smysql.repository.UserRepository;
 
-@RestController
+//@RestController
 public class UserController {
 
     @Autowired
